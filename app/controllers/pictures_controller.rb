@@ -14,7 +14,9 @@ class PicturesController < ApplicationController
 
 
 	def create
-		@picture = Picture.new(picture_params)
+		#params[:film] # => {:title :director :synopsis}
+		#can't use due to security (params[:picture]) can't trust the user
+		@picture = Picture.new(picture_params) #write the private method to call picture_params
     if @picture.save
       # if the save for the picture was successful, go to index.html.erb
       redirect_to pictures_url
@@ -41,7 +43,6 @@ class PicturesController < ApplicationController
     else
       render :edit
     end
-
   end
 
   def destroy
